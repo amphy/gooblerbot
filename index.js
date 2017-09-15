@@ -7,8 +7,8 @@ client.on('ready', () => {
 });
 
 client.on('message', msg => {
-    if (message.content.startsWith("ping")) {
-    	message.channel.send("pong!");
+    if (msg.content.startsWith("ping")) {
+    	msg.channel.send("pong!");
     }
 
     if (!msg.content.startsWith(process.env.PREFIX) || !msg.guild) return;
