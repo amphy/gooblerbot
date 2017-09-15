@@ -7,6 +7,10 @@ client.on('ready', () => {
 });
 
 client.on('message', msg => {
+    if (message.content.startsWith("ping")) {
+    	message.channel.send("pong!");
+    }
+
     if (!msg.content.startsWith(process.env.PREFIX) || !msg.guild) return;
     const command = msg.content.split(' ')[0].substr(process.env.PREFIX.length);
     const args = msg.content.split(' ').slice(1).join(' ');
