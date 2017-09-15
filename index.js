@@ -2,6 +2,20 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
+var quotes = ["\"Can the text-to-speech do this?\" - Machuka",
+	      "\"Now we know what you listen to!!!\" - cshang's friends after misposting k-pop",
+	      "\"For my stream\" - Machuka",
+	      "\"Skins get wins\" - Machuka",
+	      "\"If you wanna do it, I'll put you in my YouTube channel\" - Machuka",
+	      "\"This is why they call me the baconator\" - Machuka",
+	      "\"Just need to find my wallet\" - cshang on impulse buying Star Guardian Ezreal",
+	      "\"Intuition is bad\" - cshang",
+	      "\"200 to 300 mpg\" - cshang on the mileage his dad's car gets",
+	      "\"Sona is so OP\" - Julian",
+	      "\"If we win this one, we play URF\" - Julian",
+	      "\"If we lose this one, we play URF\" - Julian",
+	      "\"That's literally the only reason I took the offer\" - Betsy"]
+
 client.on('ready', () => {
     client.user.setGame('League of Leggos');
 });
@@ -22,6 +36,7 @@ client.on('message', msg => {
     const args = msg.content.split(' ').slice(1).join(' ');
     if (command === 'guide') return msg.channel.send('https://git.io/d.js-heroku');
     else if (command === 'invite') return msg.channel.send(process.env.INVITE);
+    else if (command === 'quote') return msg.channel.send(quotes[Math.floor(Math.random()*quotes.length)]);
 });
 
 client.login(process.env.BOT_TOKEN);
