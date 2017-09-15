@@ -11,6 +11,10 @@ client.on('message', msg => {
     	msg.channel.send("pong!");
     }
 
+    if (msg.content.startsWith("foo")) {
+        msg.channel.send("bar");
+    }
+
     if (!msg.content.startsWith(process.env.PREFIX) || !msg.guild) return;
     msg.channel.send("got ur message");
     const command = msg.content.split(' ')[0].substr(process.env.PREFIX.length);
@@ -22,6 +26,7 @@ client.on('message', msg => {
 
 client.login(process.env.BOT_TOKEN);
 
+// This part keeps the bot on 24/7
 // Web app (Express + EJS)
 const http = require('http');
 const express = require('express');
