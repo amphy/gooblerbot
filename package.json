@@ -1,0 +1,31 @@
+{
+  "name": "gooblerbot",
+  "version": "1.0.0",
+  "description": "a bot for the gooblers",
+  "main": "index.js",
+  "engines": {
+       "node": "6.11.3",
+       "npm": "3.10.10"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amphy/gooblerbot.git"
+  },
+  "keywords": [
+    "heroku",
+    "discord.js"
+  ],
+  "author": "amphy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/amphy/gooblerbot/issues"
+  },
+  "homepage": "https://github.com/amphy/gooblerbot#readme",
+  "dependencies": {
+    "discord.js": "^11.2.1"
+  }
+}
