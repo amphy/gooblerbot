@@ -68,5 +68,5 @@ app.listen(port, () => {
 
 // pings server every 15 minutes to prevent dynos from sleeping
 setInterval(() => {
- http.get('http://discordjs-heroku.herokuapp.com');
+ http.get('http://gooblerbot.herokuapp.com');
 }, 900000);
