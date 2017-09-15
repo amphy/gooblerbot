@@ -4,8 +4,8 @@
   "description": "a bot for the gooblers",
   "main": "index.js",
   "engines": {
-       "node": "6.11.3",
-       "npm": "3.10.10"
+    "node": "6.11.3",
+    "npm": "3.10.10"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -26,6 +26,9 @@
   },
   "homepage": "https://github.com/amphy/gooblerbot#readme",
   "dependencies": {
-    "discord.js": "^11.2.1"
+    "discord.js": "^11.2.1",
+    "ejs": "^2.5.7",
+    "express": "^4.15.4",
+    "opusscript": "0.0.3"
   }
 }
