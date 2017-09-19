@@ -1,6 +1,14 @@
 // Discord.js bot
 const Discord = require('discord.js');
 const client = new Discord.Client();
+const request = require('request');
+
+setInterval(() => {
+    request('http://api.lolesports.com/api/v1/scheduleItems?leagueId=9', { json:true }, (err, res, body => {
+        if (err) { return console.log(err); }
+        console.log(body.url);
+	console.log(body.explanation);
+}, 300000);
 
 var quotes = ["\"Can the text-to-speech do this?\" - Machuka",
 	      "\"Now we know what you listen to!!!\" - cshang's friends after misposting k-pop",
