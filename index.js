@@ -3,12 +3,54 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const request = require('request');
 
+var worldsData = "";
+
+// things to do on startup
+// 1. Pull data from league esports API
+request('http://api.lolesports.com/api/v1/scheduleItems?leagueId=9', { json:true }, (err, res, body) => {
+	if (err) { return console.log(err); }
+	worldsData = body;
+	});
+
+// when client is ready
+client.on('ready', () => {
+    client.user.setGame('League of Leggos');
+});
+
+// things to do on intervals
+// 1. Pull league esports API data every day
 setInterval(() => {
-    request('http://api.lolesports.com/api/v1/scheduleItems?leagueId=9', { json:true }, (err, res, body => {
+    request('http://api.lolesports.com/api/v1/scheduleItems?leagueId=9', { json:true }, (err, res, body) => {
         if (err) { return console.log(err); }
-        console.log(body.url);
-	console.log(body.explanation);
-}, 300000);
+	worldsData = body;
+    });
+}, 86400000);
+
+// 2. every 30 minutes check if match is upcoming
+setInterval(() => {
+    var now = Date.now();
+    var channel = client.servers.get("name", "general").defaultChannel;
+    for (i = 0; i < worldsData.scheduleItems.length; i++) {
+	if (worldsData.scheduleItems[i].scheduledTime.startsWith("2017")) {
+	    var time = worldsData.scheduleItems[i].scheduledTime;
+	    console.log("Checking time of match");
+	    var matchDate = new Date(time);
+	    if ((now - matchDate.getTime()) <= 3600000) {
+		 // Construct string for match
+
+                 // About an hour until match starts, post a message in general
+	         client.sendMessage(channel, "A match is coming up soon!");
+            }
+        }
+    }
+}, 1800000);
+
+
+
+// FIXME: hardcoded value for start index of scheduleEvent Array
+var scheduleStart = 182;
+
+// for every 5 min check if event in 
 
 var quotes = ["\"Can the text-to-speech do this?\" - Machuka",
 	      "\"Now we know what you listen to!!!\" - cshang's friends after misposting k-pop",
@@ -23,10 +65,6 @@ var quotes = ["\"Can the text-to-speech do this?\" - Machuka",
 	      "\"If we win this one, we play URF\" - Julian",
 	      "\"If we lose this one, we play URF\" - Julian",
 	      "\"That's literally the only reason I took the offer\" - Betsy"]
-
-client.on('ready', () => {
-    client.user.setGame('League of Leggos');
-});
 
 client.on('message', msg => {
     if (msg.content.startsWith("ping")) {
