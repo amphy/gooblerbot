@@ -42,7 +42,7 @@ setInterval(() => {
                  var str = "";
 		 request(req, { json:true }, (err, res, body) => { 
                            if (err) { return console.log(err); }
-                           str = body.teams.0.name + " versus " + body.teams.1.name + " is coming up soon!";
+                           str = body.teams[0].name + " versus " + body.teams[1].name + " is coming up soon!";
                  });
                  // About an hour until match starts, post a message in general
 	         channel.sendMessage(str);
