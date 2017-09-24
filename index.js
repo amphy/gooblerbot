@@ -26,7 +26,7 @@ setInterval(() => {
     });
 }, 86400000);
 
-2. every 30 minutes check if match is upcoming
+// 2. every 30 minutes check if match is upcoming
 setInterval(() => {
     var now = Date.now();
     var channel = client.channels.get("278038929720999937");
