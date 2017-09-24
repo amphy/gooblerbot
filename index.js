@@ -29,7 +29,7 @@ setInterval(() => {
 // 2. every 30 minutes check if match is upcoming
 setInterval(() => {
     var now = Date.now();
-    var channel = client.channels.get("general");
+    var channel = client.channels.get("278038929720999937");
     for (i = 0; i < worldsData.scheduleItems.length; i++) {
 	if (worldsData.scheduleItems[i].scheduledTime.startsWith("2017")) {
 	    var time = worldsData.scheduleItems[i].scheduledTime;
