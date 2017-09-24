@@ -26,24 +26,30 @@ setInterval(() => {
     });
 }, 86400000);
 
-// 2. every 30 minutes check if match is upcoming
-//setInterval(() => {
-//    var now = Date.now();
-//    var channel = client.channels.get("278038929720999937");
-//    for (i = 0; i < worldsData.scheduleItems.length; i++) {
-//	if (worldsData.scheduleItems[i].scheduledTime.startsWith("2017")) {
-//	    var time = worldsData.scheduleItems[i].scheduledTime;
-//	    console.log("Checking time of match");
-//	    var matchDate = new Date(time);
-//	    if ((now - matchDate.getTime()) <= 3600000) {
-//		 // Construct string for match
-
+2. every 30 minutes check if match is upcoming
+setInterval(() => {
+    var now = Date.now();
+    var channel = client.channels.get("278038929720999937");
+    for (i = 0; i < worldsData.scheduleItems.length; i++) {
+	if (worldsData.scheduleItems[i].scheduledTime.startsWith("2017")) {
+	    var time = worldsData.scheduleItems[i].scheduledTime;
+	    console.log("Checking time of match");
+	    var matchDate = new Date(time);
+	    var diff = now - matchDate.getTime();
+	    if ((diff <= 3600000) && (diff >= 0)) {
+		 // Construct string for match
+		 var req = "http://api.lolesports.com/api/v2/highlanderMatchDetails?tournamentId=a246d0f8-2b5c-4431-af4c-b872c8dee023&matchId=" + worldsData.scheduleItems[i].match;
+                 var str = "";
+		 request(req, { json:true }, (err, res, body) => { 
+                           if (err) { return console.log(err); }
+                           str = body.teams.0.name + " versus " + body.teams.1.name + " is coming up soon!";
+                 });
                  // About an hour until match starts, post a message in general
-//	         channel.sendMessage("A match is coming up soon!");
-  //          }
-//        }
-//    }
-//}, 3000000);
+	         channel.sendMessage(str);
+            }
+        }
+    }
+}, 3000000);
 //1800000
 
 
