@@ -29,7 +29,7 @@ setInterval(() => {
 // 2. every 30 minutes check if match is upcoming
 setInterval(() => {
     var now = Date.now();
-    var channel = client.servers.get("name", "general").defaultChannel;
+    var channel = client.channels.get("general");
     for (i = 0; i < worldsData.scheduleItems.length; i++) {
 	if (worldsData.scheduleItems[i].scheduledTime.startsWith("2017")) {
 	    var time = worldsData.scheduleItems[i].scheduledTime;
@@ -39,11 +39,12 @@ setInterval(() => {
 		 // Construct string for match
 
                  // About an hour until match starts, post a message in general
-	         client.sendMessage(channel, "A match is coming up soon!");
+	         channel.sendMessage("A match is coming up soon!");
             }
         }
     }
-}, 1800000);
+}, 3000000);
+//1800000
 
 
 
