@@ -27,23 +27,23 @@ setInterval(() => {
 }, 86400000);
 
 // 2. every 30 minutes check if match is upcoming
-setInterval(() => {
-    var now = Date.now();
-    var channel = client.channels.get("278038929720999937");
-    for (i = 0; i < worldsData.scheduleItems.length; i++) {
-	if (worldsData.scheduleItems[i].scheduledTime.startsWith("2017")) {
-	    var time = worldsData.scheduleItems[i].scheduledTime;
-	    console.log("Checking time of match");
-	    var matchDate = new Date(time);
-	    if ((now - matchDate.getTime()) <= 3600000) {
-		 // Construct string for match
+//setInterval(() => {
+//    var now = Date.now();
+//    var channel = client.channels.get("278038929720999937");
+//    for (i = 0; i < worldsData.scheduleItems.length; i++) {
+//	if (worldsData.scheduleItems[i].scheduledTime.startsWith("2017")) {
+//	    var time = worldsData.scheduleItems[i].scheduledTime;
+//	    console.log("Checking time of match");
+//	    var matchDate = new Date(time);
+//	    if ((now - matchDate.getTime()) <= 3600000) {
+//		 // Construct string for match
 
                  // About an hour until match starts, post a message in general
-	         channel.sendMessage("A match is coming up soon!");
-            }
-        }
-    }
-}, 3000000);
+//	         channel.sendMessage("A match is coming up soon!");
+  //          }
+//        }
+//    }
+//}, 3000000);
 //1800000
 
 
