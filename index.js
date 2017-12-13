@@ -59,6 +59,8 @@ var scheduleStart = 182;
 
 // for every 5 min check if event in 
 
+var quotes_used = [];
+
 var quotes = ["\"Can the text-to-speech do this?\" - Machuka",
 	      "\"Now we know what you listen to!!!\" - cshang's friends after misposting k-pop",
 	      "\"For my stream\" - Machuka",
@@ -182,7 +184,7 @@ var quotes = ["\"Can the text-to-speech do this?\" - Machuka",
     "\"This is just ripping people off\" - cshang",
     "\"You should show this to Betsy\" - Heather",
     "\"It's her jasmine oil\" - Heather"   
-		]
+		];
 
 client.on('message', msg => {
     if (msg.content.startsWith("ping")) {
@@ -198,7 +200,14 @@ client.on('message', msg => {
     const args = msg.content.split(' ').slice(1).join(' ');
     if (command === 'guide') return msg.channel.send('https://git.io/d.js-heroku');
     else if (command === 'invite') return msg.channel.send(process.env.INVITE);
-    else if (command === 'quote') return msg.channel.send(quotes[Math.floor(Math.random()*quotes.length)]);
+    else if (command === 'quote') {
+      q = quotes[Math.floor(Math.random()*quotes.length)];
+      if (quotes.length > 1) {
+        quotes_used.push(q);
+        quotes = quotes.filter(e => e !== q);
+      }
+      return msg.channel.send(q);
+    }
 });
 
 client.login(process.env.BOT_TOKEN);
