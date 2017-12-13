@@ -205,6 +205,9 @@ client.on('message', msg => {
       if (quotes.length > 1) {
         quotes_used.push(q);
         quotes = quotes.filter(e => e !== q);
+      } else {
+        quotes = quotes_used;
+        quotes_used = [];
       }
       return msg.channel.send(q);
     }
