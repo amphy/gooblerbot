@@ -167,7 +167,7 @@ var quotes = ["\"Can the text-to-speech do this?\" - Machuka",
     "\"Where are your dudes?\" - cshang",
     "\"I think those are guys\" - cshang",
     "\"CAN'T CATCH THIS\" - cshang",
-    "\"I think you're the most innately toxic of us\" - cshang @julian
+    "\"I think you're the most innately toxic of us\" - cshang @julian",
     "\"I did the same amount of damage as Betsy, you, and Alex combined\" - cshang",
     "\"Julian, I think for your last item you should go --oh fuck\" - cshang",
     "\"Jasmine oil\" - cshang",
